@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{$title}</title>	
+    <meta name="keywords" content="{$keywords}">
+    <meta name="description" content="{$description}">	
+    
+		{layout header}
+		
+  </head>
+  <body>	
+      
+      {layout code}
+  		<!--
+      	author:547911345@qq.com
+      	date: 2016-07-15
+      -->
+     {layout navigation}
+				
+  	<div class="container-fluid">
+  			
+				<div class="nav-bread">{$breadNavigation}</div>
+				
+				<div class="product-warp">
+					
+	  			<div class="product">
+		      	<div class="row">
+			      	
+				      	{tag:Lamb_View_Tag_List sql='@$sql@' is_page='1' pagesize='@$pagesize@' id='list' page='@$page@' empty_str='<p class="nodata">No records</p>'}
+					      	<div class="col-md-6 col-sm-6">
+					      			<a title="{field.art_title}" href="{field.art_title function="Lamb_Utils::objectCall(CALL_ROUTER, 'urlEx', array('item', 'index', array('art_title' => @this, 'id' => @me['id'])))"}">
+				        		   		<img src="{field.art_image}" width="200" height="200"/>
+				        		  </a>	
+					      			<h3 class="t"><a title="{field.art_title}" href="{field.art_title function="Lamb_Utils::objectCall(CALL_ROUTER, 'urlEx', array('item', 'index', array('art_title' => @this, 'id' => @me['id'])))"}">{field.art_title}</a></h3>
+					      			<p class="d">	{field.art_excerpt function="substr(@this, 0, 100)"}...	</p>
+				      		</div>
+		      			{/tag:Lamb_View_Tag_List}
+		      		
+		      	</div>
+	      	
+		      	<div class="row">
+							{tag:Lamb_View_Tag_Page listid="list"}
+							<div class="col-xs-12" style="text-align: center;">
+								<div class="dataTables_paginate paging_simple_numbers" id="sample-table-2_paginate">
+									<ul class="pagination">
+										<li class="paginate_button previous" aria-controls="sample-table-2" tabindex="0" id="sample_previous"><a href="@$prevPageUrl@">Previous</a></li>
+		
+										{pageitem focus='<li class="paginate_button active" aria-controls="sample-table-2" tabindex="0"><a>#page#</a></li>' nofocus='<li><a href="@$pageUrl@">#page#</a></li>'}
+		
+		
+										<li class="paginate_button next" aria-controls="sample-table-2" tabindex="0" id="sample_next"><a href="@$nextPageUrl@">Next</a></li>
+									</ul>
+								</div>
+							</div>
+							{/tag:Lamb_View_Tag_Page}
+						</div>
+						
+	      </div>
+					
+				</div>
+      
+      {layout foot_bom}	
+    </div> <!-- /container -->
+	  
+		{layout foot}
+  </body>
+</html>

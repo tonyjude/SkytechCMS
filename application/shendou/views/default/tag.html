@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{$title}</title>	
+    <meta name="keywords" content="{$keywords}">
+    <meta name="description" content="{$description}">	
+    
+		{layout header}
+		
+  </head>
+  <body>	
+  	
+		<div class="container">
+      
+      	{layout navigation}
+
+      	<div class="row">
+	      	{tag:Lamb_View_Tag_List sql='@$sql@' is_page='0' pagesize='@$pagesize@' empty_str='<p class="nodata">No records</p>', prepare_source='$aPrepareSource'}
+	      	<div class="col-md-12">
+	      			 <h1><a href="{field.art_title function="Lamb_Utils::objectCall(CALL_ROUTER, 'urlEx', array('item', 'index', array('art_title' => @this)))"}">{field.art_title}</a></h1>
+        		   <h6>{field.art_postdate}</h6>
+				       <p>
+				           {field.art_excerpt}
+				       </p>
+      		</div>
+      		{/tag:Lamb_View_Tag_List}
+      	</div>
+      	
+    </div> <!-- /container -->
+	  
+		{layout foot}
+  </body>
+</html>

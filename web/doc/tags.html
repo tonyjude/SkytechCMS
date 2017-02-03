@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>使用入门  /  SkytechCMS 基本操作说明  /  模板标签语法简介 - SkytechCMS帮助中心</title>
+<link href="/css/arclist.css" rel="stylesheet" type="text/css" />
+<meta name="keywords" content="">
+<meta name="description" content="">
+<style type="text/css">
+	table tr td{
+		font-size: 16px;
+	}
+</style>
+</head>
+<body>
+<div id="container">
+
+<div id="header">
+  <div id="navct">
+  	<div id="navtop">
+  	 当前位置：<a href='/doc/index-main.html'>主页</a> > <a href='#'>使用入门</a> > <a href='#'>SkytechCMS 基本操作说明</a> > <a href='/doc/tags.html'>模板标签语法简介</a> > 
+    </div>
+  </div>
+</div>
+
+<dl class="pubbox" >
+<dt>模板标签语法简介：</dt>
+<dd>
+<table><tr><td>
+	<div style="TEXT-INDENT: 21pt">
+	SkytechCMS的模板标签类似于XML格式，所有的模板都含有定界符，默认情况下是{tag:Lamb_View_Tag_List *}和	{/tag:Lamb_View_Tag_List}</div>
+<div style="TEXT-INDENT: 21pt">一般情况下{tag:Lamb_View_Tag_List *}和{/tag:Lamb_View_Tag_List}是成对出现的，例如：</div>
+<div style="TEXT-INDENT: 21pt">例1-1：</div>
+<div style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 4pt; BACKGROUND: silver; PADDING-BOTTOM: 1pt; BORDER-LEFT: windowtext 1pt solid; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid">
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">{tag:Lamb_View_Tag_List prepare_source='@$aPrepareSource@' sql='@$sql@' is_page='1' pagesize='@$pagesize@' id='list' page='@$page@' empty_str='&lt;p&gt;No records&lt;/p&gt;'}</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+	   &lt;div&gt;<br/>
+	   &nbsp;&nbsp;&nbsp; &lt;a title=&quot;{field.art_title}&quot; href=&quot;{field.id function=&quot;Lamb_Utils::objectCall(CALL_ROUTER, &#x27;urlEx&#x27;, array(&#x27;item&#x27;, &#x27;index&#x27;, array(&#x27;id&#x27; =&gt; @this)))&quot;}&quot;&gt;<br/>
+	    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &lt;img src=&quot;{field.art_image}&quot; width=&quot;200&quot; height=&quot;200&quot;/&gt; <br/>
+	    &nbsp;&nbsp;&nbsp;  &lt;/a&gt;	<br/>
+	    &nbsp;&nbsp;&nbsp;  &lt;h3&gt;<br/>
+        &nbsp;&nbsp;&nbsp; &nbsp;    &lt;a title=&quot;{field.art_title}&quot; href=&quot;{field.id function=&quot;Lamb_Utils::objectCall(CALL_ROUTER, &#x27;urlEx&#x27;, array(&#x27;item&#x27;, &#x27;index&#x27;, array(&#x27;id&#x27; =&gt; @this)))&quot;}&quot;&gt;  {field.art_title}
+             &lt;/a&gt;<br/>
+        &nbsp;&nbsp;&nbsp;     &lt;/h3&gt;<br/>
+	&nbsp;&nbsp;&nbsp;  &lt;p&gt;{field.art_excerpt function=&quot;substr(@this, 0, 100)&quot;}...&lt;/p&gt;<br/>
+	&nbsp;&nbsp;	&lt;/div&gt;
+		
+</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">{/tag:Lamb_View_Tag_List}</div>
+	</div>
+<br />	
+<div style="TEXT-INDENT: 21pt">上面的{tag:Lamb_View_Tag_List *}和{/tag:Lamb_View_Tag_List}成对出现在模板文件中。</div>
+<div style="TEXT-INDENT: 21pt; color: red;"><br />
+	这个是列表页标签， 标签里的属性一般不需要修改，都由PHP封装完成。<br />
+如果是为筛选一些特殊选项，例如推荐，则需要重写sql属性：  sql='select * from skytech_article where recommend=1' <br />
+修改分页size，例如：pagesize='10', 默认的分页size是在后台配置的<br /><br />
+</div>
+
+
+<div style="TEXT-INDENT: 21pt; color: red;"><br />
+	文章默认是按发布时间降序排列，如果需要将文章进行排序，则需要重写'@$sql@'<br />
+	<p>
+		SELECT a.* FROM skytech_article as a, skytech_categories as c, skytech_categories_article as ca where a.id = ca.article_id and c.id = ca.categorie_id and ca.categorie_id = @$id@ order by art_readcount desc
+	</p>
+	<strong>order by art_readcount desc</strong> 默认是降序排序，如果需要升序排序 将<strong>desc</strong>改完<strong>asc</strong>
+	<br />
+	<br />
+	<br />
+</div>
+
+<div style="TEXT-INDENT: 21pt">获取列表项中属性需要用到 {field.*} 标签， 标签内容视表字段而定。  </div>
+<div style="TEXT-INDENT: 21pt">例如：</div>
+<div style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 4pt; BACKGROUND: silver; PADDING-BOTTOM: 1pt; BORDER-LEFT: windowtext 1pt solid; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid">
+	
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.art_title} 文章标题
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.art_image} 文章缩略图
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.art_seo_title} 文章缩略图
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.art_excerpt} 文章摘要、简介
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.art_keywords} 文章关键词
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.art_readcount} 文章发布日期
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.art_postdate} 文章阅读数
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.art_tag} 文章标签
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.art_content} 文章内容， 一般在列表页不会显示
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.art_content_option1} 文章内容之选项卡1
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.art_content_option2} 文章内容之选项卡2
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.id function="Lamb_Utils::objectCall(CALL_ROUTER, 'urlEx', array('item', 'index', array('id' => @this)))"}
+		获取文章链接 一般不需要修改
+	</div>
+	
+</div>
+
+<br />
+<div style="TEXT-INDENT: 21pt">下面的标签配合上面列表标签做分页操作 listid='list' 对应上面的 id='list' </div>
+<div style="TEXT-INDENT: 21pt">例1-2：</div>
+<div style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 4pt; BACKGROUND: silver; PADDING-BOTTOM: 1pt; BORDER-LEFT: windowtext 1pt solid; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid">
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		
+	  {tag:Lamb_View_Tag_Page listid=&quot;list&quot;} 	<br/>
+		&nbsp;&nbsp;&nbsp; &lt;div&gt;	<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;ul&gt;	<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	&lt;li&gt;&lt;a href=&quot;@$prevPageUrl@&quot;&gt;Previous&lt;/a&gt;&lt;/li&gt;	<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	{pageitem focus=&#x27;&lt;li&gt;&lt;a&gt;#page#&lt;/a&gt;&lt;/li&gt;&#x27; nofocus=&#x27;&lt;li&gt;&lt;a href=&quot;@$pageUrl@&quot;&gt;#page#&lt;/a&gt;&lt;/li&gt;&#x27;}<br/>
+		
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &lt;li&gt;&lt;a href=&quot;@$nextPageUrl@&quot;&gt;Next&lt;/a&gt;&lt;/li&gt;	<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/ul&gt;			<br/>	
+		&nbsp;&nbsp;&nbsp; &lt;/div&gt;	<br/>
+	&nbsp;&nbsp;{/tag:Lamb_View_Tag_Page}
+		
+</div>
+</div>
+<div style="TEXT-INDENT: 21pt">上面的{tag:Lamb_View_Tag_Page  *}和{/tag:Lamb_View_Tag_Page}也是成对出现在模板文件中。</div>
+<div style="TEXT-INDENT: 21pt">
+	其中的任何html标签都可以为其定义class, id,自定义属性等
+</div>	
+<br />
+
+<div style="TEXT-INDENT: 21pt">获取专题中属性需要用到 {$data['*']} 标签， 标签内容视表字段而定。  </div>
+<div style="TEXT-INDENT: 21pt">例如：</div>
+<div style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 4pt; BACKGROUND: silver; PADDING-BOTTOM: 1pt; BORDER-LEFT: windowtext 1pt solid; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid">
+	
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_name']} 专题名
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_title']} 专题标题
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_content']} 专题内容
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_content_option1']} 专题内容选修卡1
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_content_option2']} 专题内容选修卡2
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_author']} 专题作者
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_img']} 专题封面
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_seo_title']} 专题SEO标题
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_keywords']} 专题关键字
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_postdate']} 专题添加日期
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_description']} 专题摘要
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_url']} 专题跳转地址
+	</div>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{$data['topic_readcount']} 专题阅读数
+	</div>
+</div>
+<br />
+
+<div style="TEXT-INDENT: 21pt">获取指定栏目以及其子栏目下的文章数（pagesize），没有分页功能，条件指定为 默认|推荐|特荐|跳转  <font color="red">(0: 默认, 1: 推荐, 2: 特荐, 3: 跳转) </font></div>
+<div style="TEXT-INDENT: 21pt">例如：</div>
+&nbsp;&nbsp;{tag:Lamb_View_Tag_List sql='select a.* from skytech_article a, skytech_categories_article b where a.id = b.article_id and b.categorie_id and b.categorie_id=2 and a.art_status =1 and a.recommend =1'  is_page="1" page="1" pagesize='10'}<br /> 
+&nbsp;&nbsp;&nbsp;&lt;div&gt;<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;{field.art_title function=&quot;Lamb_Utils::objectCall(CALL_ROUTER, &#x27;urlEx&#x27;, array(&#x27;item&#x27;, &#x27;&#x27;, array(&#x27;art_title&#x27; =&gt; @this, &#x27;id&#x27; =&gt; @me[&#x27;id&#x27;])))&quot;}&quot; &gt;<br />
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;&lt;img src=&quot;{field.art_image}&quot;&gt;&lt;/span&gt;<br />
+       &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;{field.art_title}&lt;/p&gt;<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />
+&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />
+&nbsp;&nbsp;{/tag:Lamb_View_Tag_List}<br /><br />
+
+&nbsp;&nbsp;其中SQL :<br />
+
+<font color="red">select a.* from skytech_article a, skytech_categories_article b where a.id = b.article_id and b.categorie_id and b.categorie_id=2 and a.art_status =1 and a.recommend =1</font>
+<br /><br />
+指定查询栏目为2（categorie_id=2） 设为推荐（a.recommend =1）的文章
+如果是查询指定栏目的文章，不包含其子栏目，则SQL:<br /><br />
+
+<font color="red">select * from skytech_article where art_catalog_id=2 and recommend=1</font>
+<br />
+<br />
+<div style="TEXT-INDENT: 21pt"> 其他标签 </div>
+<div style="TEXT-INDENT: 21pt">例1-3：</div>
+<div style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 4pt; BACKGROUND: silver; PADDING-BOTTOM: 1pt; BORDER-LEFT: windowtext 1pt solid; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid">
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none"> <br />
+	首页 TDK, <br />
+	列表页 TDK,<br />
+	内容页 TDK,<br />
+	标签页 TDK 等引用标签<br />
+	{$title}, {$keywords}, {$description} <br /><br />
+
+	模板引用标签：  {layout 模板名} <br /><br />
+		
+	网站面包屑导航 ：<p style="TEXT-INDENT: 21pt; color: red;"> {$breadNavigation} </p><br />
+		
+	导航栏标签：  <p style="TEXT-INDENT: 21pt; color: red;"> {$this->showWebMenu();}	</p> <br />  
+	获取所有树形栏目： <p style="TEXT-INDENT: 21pt; color: red;">{$this->showWebMenu(0);}</p>	<br />
+	
+	获取指定栏目下的所有栏目：<p style="TEXT-INDENT: 21pt; color: red;">{$this->showWebMenu(0,1);}</p>
+	
+			第一个参数表示指定全部显示，第二个参数表示指定导航的ID
+		 <br />
+		 <br />
+		
+	获取指定栏目下的一级栏目：
+	<p style="TEXT-INDENT: 21pt; color: red;">{$this->showSubMenu(1);}  </p>
+	 	
+	 其中参数是栏目的ID,获取该栏目下的子栏目，不会递归获取所有栏目！
+
+	</div>
+</div>
+<br />
+<div style="TEXT-INDENT: 28.1pt">
+	<strong><span style="FONT-SIZE: 14pt">配置文件</span></strong>
+</div>
+<div style="TEXT-INDENT: 21pt">
+系统全局配置文件 config.var.php
+</div>
+<br />
+<div style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 4pt; BACKGROUND: silver; PADDING-BOTTOM: 1pt; BORDER-LEFT: windowtext 1pt solid; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid">
+	常用网页前端调用字段 field 
+	<p style="TEXT-INDENT: 21pt; color: red;">name (公司名称)   linkman(联系人)     phone(电话)</p>
+    <p style="TEXT-INDENT: 21pt; color: red;">skype  whatapp   wechat(微信)  qq</p>
+    <p style="TEXT-INDENT: 21pt; color: red;">email (邮箱)  web_title (网站标题)  web_keywords (网站关键词) description (网站描述)</p>
+   	<p>调用方式 ： {$this->mSiteCfg['webInfo']['site'][field]}</p>
+</div>
+<br />
+<div style="TEXT-INDENT: 28.1pt">
+	<strong><span style="FONT-SIZE: 14pt">函数</span></strong>
+</div>
+<div style="TEXT-INDENT: 21pt">每一个SkytechCMS的属性标签都可以使用自定义函数对其进行扩展，自定义函数内容主要用于对当前标签输出内容进行处理。</div>
+<div style="TEXT-INDENT: 21pt">例1-4：</div>
+<div style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 4pt; BACKGROUND: silver; PADDING-BOTTOM: 1pt; BORDER-LEFT: windowtext 1pt solid; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid">
+<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">{field.属性名 function="yourfunction(*, @this)"/}
+</div>
+<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">其中 @this 用于表示当前标记的值，其它参数由你的函数决定是否存在，例如：</div><br />
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+		{field.art_postdate function=&quot;date('Y-m-d h:m:s',@this)&quot;/}<br /><br />
+		&nbsp;&nbsp;其中属性 field.art_postdate 是时间戳格式， 例如 ： 1479697015 <br /><br />
+	
+		&nbsp;&nbsp;如果是日期格式 2016-11-21 10:56:55 ，只需要日期，不需要时间，则需要用到截取函数 <br /><br />
+		&nbsp;&nbsp;{field.art_postdate function=&quot;substr(@this,0,10)&quot;/}<br /><br />
+	</div>
+</div>
+<br />
+
+<div style="TEXT-INDENT: 28.1pt"><strong><span style="FONT-SIZE: 14pt">编程</span></strong></div>
+<div style="TEXT-INDENT: 21pt">SkytechCMS模板很方便的一个地方就是支持PHP原生编程。但不可以在标签内部编写php代码</div>
+<div style="TEXT-INDENT: 21pt">格式为：</div>
+<div style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 4pt; BACKGROUND: silver; PADDING-BOTTOM: 1pt; BORDER-LEFT: windowtext 1pt solid; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid">
+<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: silver; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+	
+     &lt;?php <br/>
+		&nbsp;&nbsp;&nbsp;&nbsp; foreach($list as $item) { <br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo &quot;&lt;li&gt;&lt;a href=&#x27;{$item[&#x27;url&#x27;]}&gt;&quot; . $item[&#x27;art_title&#x27;] . &quot;&lt;/a&gt;&lt;/li&gt;&quot;; <br /> 
+		&nbsp;&nbsp;&nbsp;&nbsp; } <br/> 
+	&nbsp;&nbsp; ?&gt;
+</div>
+</div>
+
+</td></tr></table>
+</dd>
+</dl>
+
+
+<br class="clearfloat" />	
+<div id="footer">
+<p>
+Copyright 2015-2017 <a href="#" target=_blank><u>SkytechCMS</u></a>
+</p>
+</div>
+</div>
+</body>
+</html>

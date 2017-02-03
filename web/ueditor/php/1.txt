@@ -1,0 +1,47 @@
+Array
+(
+    [webInfo] => Array
+        (
+            [site] => Array
+                (
+                    [name] => 上海xx技术有限公
+                    [host] => 
+                    [root] => 
+                    [email] => 547911345@qq.com
+                    [web_title] => 网站标题
+                    [web_keywords] => 网站关键词
+                    [description] => 网站描述
+                    [mode] => 1
+                    [isSend] => 0
+                )
+
+            [upload] => Array
+                (
+                    [img_path] => upload/
+                    [maxSize] => 409600
+                    [allowFiles] => Array
+                        (
+                            [0] => .doc
+                            [1] => .png
+                            [2] => .jpg
+                            [3] => .jpeg
+                            [4] => .gif
+                        )
+
+                    [isWatermark] => 1
+                    [watermark] => images/watermark.png
+                    [waterposition] => 3
+                )
+
+            [static] => Array
+                (
+                    [extendtion] => html
+                    [static_key] => /keyword/
+                    [pagesize] => 6
+                    [save_path] => ../web/
+                    [template] => ../application/shendou/views/default
+                )
+
+        )
+
+)

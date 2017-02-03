@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{$title}</title>	
+    <meta name="keywords" content="{$keywords}">
+    <meta name="description" content="{$topic_description}">	
+    
+		{layout header}
+		
+  </head>
+  <body>
+  	
+  	{layout code}
+  	
+  	<!--
+      	作者：网站导航
+      	时间：2016-07-15 4444ddddddddddddddddd
+      	描述：ddddddddddddd
+      -->
+  	{layout navigation}
+		<div class="container-fluid">
+				<!--
+        	作者：547911345@qq.com
+        	时间：2016-07-15
+        	描述：面包屑导航
+        -->
+			  {layout navigationBanner}
+      	
+      	<div class="topic">
+      		
+      		<p>{$data['topic_postdate']}</p>
+	      	<p>{$data['topic_content']}</p>
+      		
+      	</div>
+				
+				{layout foot_bom}
+    </div> <!-- /container -->
+	  
+	{layout foot}
+  </body>
+</html>

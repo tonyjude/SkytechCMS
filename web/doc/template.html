@@ -1,0 +1,77 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>使用入门  /  SkytechCMS 基本操作说明  /  主要模板文件与功能说明 - SkytechCMS帮助中心</title>
+<link href="/css/arclist.css" rel="stylesheet" type="text/css" />
+<meta name="keywords" content="">
+<meta name="description" content="">
+<style type="text/css">
+	table tr td{
+		font-size: 16px;
+	}
+</style>
+</head>
+<body>
+<div id="container">
+
+<div id="header">
+  <div id="navct">
+  	<div id="navtop">
+  	 当前位置：<a href='/doc/index-main.html'>主页</a> > <a href='#'>使用入门</a> > <a href='#'>SkytechCMS 基本操作说明</a> > <a href='/doc/template.html'>主要模板文件与功能说明</a> > 
+    </div>
+  </div>
+</div>
+
+<dl class="pubbox" >
+<dt>主要模板文件与功能说明：</dt>
+<dd>
+<table>
+	<tr>
+		<td>
+			<div>SkytechCMS系统的模板是非固定的，用户可以在新建栏目时可以自行选择栏目模板，官方仅提供最基本的默认模板，即是内置系统模型的各个模板，由于SkytechCMS支持自定义频道模型，用户自定义新频道模型后，还需要按该模型的字段设计一套新的模板，此外，SkytechCMS也支持使用风格的形式使用模板，默认风格是 default，它表示系统默认使用 application/shendou/views/default 这个文件夹的模板，如果你下载了一套新的模板，你可以不必要删除 default 原有的文件，把下载的模板文件夹命名你想要的风格名称，如 style2 等，然后在后台配置文件中修改了默认的模板风格名称为 style2 ，那系统将使用application/shendou/views/style2 这文件当作默认模板，但是若你手工指定了栏目模板的位置，则后台参数风格的定义无效。
+			</div>
+			<div>&nbsp;</div>
+			<div>一、概念，设计和使用模板，必须要理解下面几个概念</div>
+			<div>1、专题模板：</div>
+			<div>　　指网站主页或比较重要的栏目专题频道使用的模板，一般用&ldquo;（contact_us）专题缩写&rdquo;命名，此外，用户单独定义的单个页面或自定义标记，也可选是否支持板块模板标记，如果支持，系统会用板块模板标记引擎去解析后才输出内容或生成特定的文件。</div>
+			<div>2、列表模板：</div>
+			<div>　　指网站某个栏目的所有文章列表的模板，一般用 &ldquo;list_识别&rdquo; 命名。 </div>
+			<div>3、档案模板：</div>
+			<div>　　表示文档查看页的模板，如文章模板，一般用 &ldquo;item_识别&rdquo; 命名。</div>
+			<div>4、其它模板：</div>
+			<div style="TEXT-INDENT: 21pt">一般系统常规包含的模板有：主页模板、搜索模板、标签模板等，此外用户也可以自定义一个模板创建为任意文件。</div>
+			<div>&nbsp;</div>
+			<div>二、 命名，SkytechCMS模板默认命名规则如下</div>
+			<div>1、模板保存位置：</div>
+			<div>　　模板目录：application/shendou/views/样式名称（英文，默认为default）/具体功能模板文件</div>
+			<div>2、 模板文件命名规范：</div>
+			<div>（1）识别 （专题缩写）：　表示专题（封面）模板；</div>
+			<div>（2）list_识别：　表示栏目列表模板； 默认 list </div>
+			<div>（3）item_识别：　表示内容查看页（文档模板，包括专题查看页）； 默认 item </div>
+			<div>（4）search： 搜索结果列表模板； </div>
+			<div>（5）tag： 标签模板；</div>
+			<div>（6）index： 主页模板；</div>
+			<div>（7）关于网站模板的 <font style="color: red;">头尾等公用的部门 命名规则一律 使用sky_footer, sky_head, sky_form 等以 sky为前缀！</font></div>
+			<div>&nbsp;</div>
+			<div>例：list_product 表示是就是产品列表模板。</div>
+			<div>　　item_product 表示的是产品内容页模板。</div>
+			<div>　　about_us 表示的是关于我们专题页模板。</div>
+			<div>　　index 表示的是首页模板。</div>
+		</td>
+	</tr>
+</table>
+</dd>
+</dl>
+
+
+<br class="clearfloat" />	
+<div id="footer">
+<p>
+Copyright 2015-2017 <a href="#" target=_blank><u>SkytechCMS</u></a>
+</p>
+</div>
+</div>
+</body>
+</html>

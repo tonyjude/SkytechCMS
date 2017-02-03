@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<title>Skytech CMS V1.0帮助文档索引</title>
+<link href="/css/base.css" rel="stylesheet" type="text/css" />
+<script language="javascript">
+function $DE(id)
+{
+	return document.getElementById(id);
+}
+function LoadSuns(ctid,tid)
+{
+	showHide(ctid);
+}
+function showHide(objname)
+{
+   if($DE(objname).style.display=="none") $DE(objname).style.display = "block";
+	 else $DE(objname).style.display="none";
+	 return false;
+}
+</script>
+<style>
+.nbt{
+  font:12px 宋体; padding: 1px 1px 0 1px ;
+  vertical-align:middle ;
+  margin-bottom:1px;
+  border:1px solid #81AC2F; background:#eff6b6; height:21px ;
+  float:left;
+  margin-left:3px;
+}
+div,dd{ margin:0px; padding:0px }
+.dlf { margin-right:3px; margin-left:6px; margin-top:2px; float:left }
+.dlr { float:left }
+.topcc { margin-top:5px }
+.suncc { margin-bottom:3px }
+dl { clear:left; margin:0px; padding:0px }
+.sunct{  }
+#items1
+{
+	border-bottom: 1px solid #74c63f;
+  border-left: 1px solid #74c63f;
+  border-right: 1px solid #74c63f;
+}
+.sunlist { width:100%; padding-left:0px; margin:0px; clear:left } 
+.tdborder {
+  border-left: 1px solid #43938B;
+  border-right: 1px solid #43938B;
+  border-bottom: 1px solid #43938B;
+}
+.tdline-left {
+  border-bottom: 1px solid #656363;
+  border-left: 1px solid #788C47;
+}
+.tdline-right {
+  border-bottom: 1px solid #656363;
+  border-right: 1px solid #788C47;
+}
+.tdrl {
+border-left: 1px solid #788C47;
+border-right: 1px solid #788C47;
+}
+.top { cursor: pointer; }
+body
+{
+ /*scrollbar-base-color:#bae87c;
+ scrollbar-arrow-color:#FFFFFF;
+ scrollbar-shadow-color:#c1ea8b;
+ */
+ padding:3px 0px 0px 0px;
+ margin:auto;
+ text-align:center;
+ background-color:#9ad075;
+}
+</style>
+</head>
+<base target="main" />
+<body>
+<form name="formjump" method="post" target="main" action=""></form>	
+<table width='220' border='0' align='center' cellpadding='0' cellspacing='0'>
+  <tr> 
+    <td width="8%" height='28' align='center' background='/images/mtbg1.gif'  style='border-left: 1px solid #74c63f;'><img src="/images/mtimg1.gif" border="0" /></td>
+    <td width="92%" background='/images/mtbg1.gif' style='border-right: 1px solid #74c63f;'>
+    	<b>Skytech CMS帮助索引</b>
+    </td>
+  </tr>
+  <tr> 
+    <td colspan='2' id='items1' align='center' style="background:#ffffff url(/images/mmenubg2.gif) no-repeat;padding-left:8px;"> 
+<dl class='topcc'>
+  <dd class='dlf'><img style='cursor:pointer' onClick="LoadSuns('suns1',1);" src='/images/tree_explode.gif'/></dd>
+  <dd class='dlr'>安装配置</dd>
+</dl>
+<div id='suns1' class='sunct' style='display:none'>  
+  <table class='sunlist'>
+   <tr>
+     <td>　 <img src='/images/tree_page.gif'/> <a href='/doc/install.html'>系统环境需求及注意事项</a></td>
+   </tr>
+  </table>
+</div>
+<dl class='topcc'>
+  <dd class='dlf'><img style='cursor:pointer' onClick="LoadSuns('suns2',2);" src='/images/tree_explode.gif'/></dd>
+  <dd class='dlr'>使用入门</dd>
+</dl>
+<div id='suns2' class='sunct' style='display:none'> 
+  <table class='sunlist'>
+   <tr>
+     <td>　 <img src='/images/tree_page.gif'/> <a href='/doc/install2.html'>SkytechCMS系统安装</a></td>
+   </tr>
+  </table>
+  <table class='sunlist'>
+   <tr>
+     <td>　 <img src='/images/tree_page.gif'/>SkytechCMS 基本操作说明</td>
+   </tr>
+  </table>
+  <table class='sunlist'>
+   <tr>
+     <td>　　 <img src='/images/tree_page.gif'/> <a href='/doc/category.html'>栏目管理</a></td>
+   </tr>
+  </table>
+  <table class='sunlist'>
+   <tr>
+     <td>　　 <img src='/images/tree_page.gif'/> <a href='/doc/content.html'>内容发布</a></td>
+   </tr>
+  </table>
+  <table class='sunlist'>
+   <tr>
+     <td>　　 <img src='/images/tree_page.gif'/> <a href='/doc/static.html'>HTML更新</a></td>
+   </tr>
+  </table>
+</div>
+<dl class='topcc'>
+  <dd class='dlf'><img style='cursor:pointer' onClick="LoadSuns('suns3',3);" src='/images/tree_explode.gif'/></dd>
+  <dd class='dlr'>模板设计</dd>
+</dl>
+<div id='suns3' class='sunct' style='display:none'>  <table class='sunlist'>
+   <tr>
+     <td>　 <img src='/images/tree_page.gif'/> <a href='/doc/template.html'>主要模板文件与功能说明</a></td>
+   </tr>
+  </table>
+  <table class='sunlist'>
+   <tr>
+     <td>　 <img src='/images/tree_page.gif'/> <a href='/doc/tags.html'>模板标签语法简介</a></td>
+   </tr>
+  </table>
+</div>
+
+    </td>
+  </tr>
+</table>
+</body>
+</html>

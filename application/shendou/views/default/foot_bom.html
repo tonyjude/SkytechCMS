@@ -1,0 +1,36 @@
+<footer>
+	<div class="contact">
+		
+    	<div class="row"> 
+    		<div class="col-md-4 col-xs-12">
+	    		<h4>Classification</h4>
+	    		<ul>
+					{$this->showSubMenu(1);}
+	    		</ul>
+			</div>
+    		
+    		<div class="col-md-4 col-xs-12">
+    			<h4>Contact Us</h4>
+    			<p>Shanghai Vincit- Gao Industrial Co., Ltd</p>
+    			<p>Email: ng@vincit-gao.com</p>
+    			<p>Tel: + 86 2131116195</p>
+				<p>http://www.vincit-gao.com/</p>
+				<p>http://www.dredging-china.com/</p>
+				<p>Add: No. 1919 Zhongshan West Road, Xuhui Dist., Shanghai, PR China</p>
+    		</div>
+    		
+    		<div class="col-md-4 col-xs-12">
+    			<h4>Follow Us</h4>
+    			<div class="follows">
+    				{tag:Lamb_View_Tag_List sql='select * from skytech_flinks' empty_str='<p class="nodata">No records</p>'}
+    				<a href="{field.flink_site}"><img src="{field.flink_logo}"></a>
+    				{/tag:Lamb_View_Tag_List}
+    			</div>
+    		</div>
+    		
+    	</div>
+		
+		<a href="mailto:ng@vincit-gao.com" target="_top" class="btn btn-email">Mail us<span class="glyphicon glyphicon-chevron-right"></span></a>
+		
+	</div>
+</footer>

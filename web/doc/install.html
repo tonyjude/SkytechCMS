@@ -1,0 +1,63 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>安装配置  /  系统环境需求及注意事项 - SkytechCMS帮助中心</title>
+<link href="/css/arclist.css" rel="stylesheet" type="text/css" />
+<meta name="keywords" content="">
+<meta name="description" content="">
+<style type="text/css">
+	table tr td{
+		font-size: 16px;
+	}
+</style>
+</head>
+<body>
+<div id="container">
+
+<div id="header">
+  <div id="navct">
+  	<div id="navtop">
+  	 当前位置：<a href='/doc/index-main.html'>主页</a> > <a href='#'>安装配置</a> > <a href='/doc/install.html'>系统环境需求及注意事项</a> > 
+    </div>
+  </div>
+</div>
+
+<dl class="pubbox" style='[cmsreplace]'>
+<dt>系统环境需求及注意事项：</dt>
+<dd>
+<table><tr><td><p>SkytechCMS 居于PHP和MySQL技术开发，可同时使用于Windows、Linux、Unix平台，环境需求如下：</p>
+<p><strong>1、Windows 平台：</strong><br />IIS/Apache + PHP4/PHP5 + MySQL4/5<br /></p>
+<p><strong>2、Linux/Unix 平台</strong><br />Apache + PHP4/PHP5 + MySQL3/4/5 (PHP必须在非安全模式下运行)</p>
+<p>建议使用平台：Linux + Apache2.2 + PHP5.3 + MySQL5.0</p>
+<p><strong>3、PHP必须环境或启用的系统函数：<br /></strong>allow_url_fopen<br />GD扩展库<br />MySQL扩展库<br />系统函数 &mdash;&mdash; phpinfo、dir</p>
+<p><strong>4、基本目录结构</strong><br />/<br />
+..../web&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;系统程序目录[安装时必须有可写入权限]<br />
+..../web/css/  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;系统后台css目录<br />
+..../web/images/  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;系统后台图片目录<br />
+..../web/js/  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;系统后台javascript目录<br />
+..../web/doc/  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;系统操作文档目录<br />
+..../web/ueditor/  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;百度编辑器目录<br />
+..../web/upload/  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;站点文件上传目录<br />
+..../web/themes/  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;站点文件目录， 包括css,images,js...<br />
+..../skytech_admin.php?s=index/install&nbsp;&nbsp;&nbsp;&nbsp; 系统安装程序入口<br />
+..../web/skytech_admin.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;后台管理登录入口<br />
+..../application&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 应用程序目录<br />
+..../library&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 系统框架文件目录<br />
+</p>
+<p><strong>5、PHP环境容易碰到的不兼容性问题</strong><br />(1) web目录没写入权限，导致系统session无法使用，这将导致无法登录管理后台（直接表现为验证码不能正常显示）；<br />(2) php的上传的临时文件夹没设置好或没写入权限，这会导致文件上传的功能无法使用；<br />(3) 出现莫名的错误，如安装时显示空白，这样能是由于系统没装载mysql扩展导致的。<br /></p>
+<p>&nbsp;</p></td></tr></table>
+</dd>
+</dl>
+
+<br class='clearfloat' />
+	
+<div id="footer" style='margin-top:8px'>
+<p>
+Copyright 2015-2017 <a href="#" target=_blank><u>SkytechCMS</u></a>
+</p>
+</div>
+</div>
+</body>
+</html>

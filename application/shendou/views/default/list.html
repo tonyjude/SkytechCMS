@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{$title}</title>	
+    <meta name="keywords" content="{$keywords}">
+    <meta name="description" content="{$description}">	
+    
+		{layout header}
+		
+  </head>
+  <body>	
+  		<!--
+      	author:547911345@qq.com
+      	date: 2016-07-15
+      -->
+  	{layout navigation}
+	
+		<div class="container-fluid">
+
+      	<div class="row">
+	      	{tag:Lamb_View_Tag_List sql='@$sql@' is_page='1' pagesize='@$pagesize@' id='list' page='@$page@' empty_str='no data'}
+	      	<div class="col-md-12">
+	      			 <h1><a href="{field.art_title function="Lamb_Utils::objectCall(CALL_ROUTER, 'urlEx', array('item', 'index', array('art_title' => @this)))"}">{field.art_title}</a></h1>
+        		   <h6>{field.art_postdate}</h6>
+				       <p>
+				           {field.art_excerpt}
+				       </p>
+      		</div>
+      		{/tag:Lamb_View_Tag_List}
+      	</div>
+      	
+      	<div class="row">
+					{tag:Lamb_View_Tag_Page listid="list"}
+					<div class="col-xs-12">
+						<div class="dataTables_paginate paging_simple_numbers" id="sample-table-2_paginate">
+							<ul class="pagination">
+								<li class="paginate_button previous" aria-controls="sample-table-2" tabindex="0" id="sample_previous"><a href="@$prevPageUrl@">上一页</a></li>
+
+								{pageitem focus='<li class="paginate_button active" aria-controls="sample-table-2" tabindex="0"><a>#page#</a></li>' nofocus='<li><a href="@$pageUrl@">#page#</a></li>'}
+
+
+								<li class="paginate_button next" aria-controls="sample-table-2" tabindex="0" id="sample_next"><a href="@$nextPageUrl@">下一页</a></li>
+							</ul>
+						</div>
+					</div>
+					{/tag:Lamb_View_Tag_Page}
+				</div>
+      	
+   </div> <!-- /container -->
+  </body>
+</html>

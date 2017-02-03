@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{http_host} ^shineglass.cn [NC]
+RewriteRule ^(.*)$ http://www.shineglass.cn/$1 [L,R=301]
+RewriteRule keyword\/(.*)\/$ \/index.php?s=tag/index/keyword/$1

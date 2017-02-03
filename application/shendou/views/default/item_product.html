@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{$title}</title>	
+    <meta name="keywords" content="{$keywords}">
+    <meta name="description" content="{$description}">	
+    
+		{layout header}
+		
+  </head>
+  <body>	
+  	
+      {layout code}
+  		<!--
+      	author:547911345@qq.com
+      	date: 2016-07-15
+      -->
+	  	{layout navigation}
+			<div class="container-fluid">
+				  <div class="nav-bread">{$breadNavigation}</div>
+
+					<div class="row">
+		      	
+		      	<div class="col-md-3 col-md-offset-1 nav-left nav-left-item">
+		      		{layout left_nav}
+		      	</div>
+		      	
+		      	<div class="col-md-6 product-content">
+		      		
+			      	<h1>{$data['art_title']}</h1>
+			      	<p>{$data['art_content']}</p>
+			      	
+			      	<p>
+			      		{$tags}
+			      	</p>
+			      	
+		      	</div>
+						
+					</div>
+
+		      {layout foot_bom}
+	    </div> <!-- /container -->
+	  
+		{layout foot}
+
+  </body>
+</html>

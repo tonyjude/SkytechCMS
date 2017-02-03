@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{$title}</title>	
+    <meta name="keywords" content="{$keywords}">
+    <meta name="description" content="{$description}">	
+
+		{layout header}
+		<link rel="stylesheet" href="/themes/css/swiper-3.3.1.min.css" >
+  </head>
+  <body>	
+  	{layout code}
+  	
+		<!--
+	  	Website navigation DATE: 2016-07-15
+	  -->
+	  {layout navigation}
+	   
+	  
+	  <div class="container-fluid">
+
+	  	<div class="con-middle">
+	  		<!--div class="con-middle-top">
+	  				<h1>ACTIVE QUALITY MANAGEMENT</h1>
+	  				<p>ORDERNOW！</p>
+	  		</div-->
+				
+				<div class="con-middle-btm">
+					<h1>WELCOME TO SHANGHAI VINCIT- GAO INDUSTRIAL CO., LTD!</h1>
+					<p>We are your reliable choose in China</p>
+				</div>
+	  	</div>
+	  
+	  	<img src="/themes/images/middle.jpg"  style="width: 100%;" />
+	  	
+	  	<!-- Swiper -->
+	  	<div class="_swiper">
+		   	<div class="row">
+
+					<div class="col-md-4">
+							<div class="s1">
+								<p>High Quality Products.</p>
+							</div>
+					</div>
+					
+		      <div class="col-md-4">
+		      	<div class="s1">
+			      	<p>Active Quality Management.</p>
+		      	</div>
+		      </div>
+		      
+		      <div class="col-md-4">
+		      	<div class="s1">
+		      		<p>Worldwide Logistic Support.</p>
+		      	</div>
+		   		</div>
+		   		
+		   	</div>
+	  	</div>
+	    <!-- Swiper -->
+	    
+	    <div class="banner-title">
+	    	<p>PRODUCT</p>
+	    </div>
+	    <div class="product-show">
+		    <div class="row">
+		    	{tag:Lamb_View_Tag_List sql='select * from skytech_article where recommend=1' page="1" is_page="1" pagesize='8'  empty_str='<p class="nodata">No records</p>'}
+		    	<div class="col-md-3 col-sm-6 col-xs-12">
+		    			<a href="{field.art_title function="Lamb_Utils::objectCall(CALL_ROUTER, 'urlEx', array('item', '', array('art_title' => @this, 'id' => @me['id'])))"}" ><img src="{field.art_image}"  /></a>
+		    			<p><a href="{field.art_title function="Lamb_Utils::objectCall(CALL_ROUTER, 'urlEx', array('item', '', array('art_title' => @this, 'id' => @me['id'])))"}" >{field.art_title}</a></p>
+		    	</div>
+		    	{/tag:Lamb_View_Tag_List}
+		    </div>
+	    </div>
+	    
+	    {layout foot_bom}	
+	  </div>	
+		
+		{layout foot}	
+  </body>
+  
+</html>

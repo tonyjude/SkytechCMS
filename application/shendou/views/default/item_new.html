@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{$title}</title>	
+    <meta name="keywords" content="{$keywords}">
+    <meta name="description" content="{$description}">		
+    
+		{layout header}
+		
+  </head>
+  <body>	
+ 
+  	{layout code}
+  	
+  	<!--
+      	author:547911345@qq.com
+      	date: 2016-07-15
+      -->
+  	{layout navigation}
+		<div class="container-fluid">
+				<!--
+        	author:547911345@qq.com
+        	date: 2016-07-15
+        	describe:Bread crumbs navigation
+        -->
+			  {layout navigationBanner}
+      	
+      	<div class="news">
+      		
+      		<h1>{$data['art_title']}</h1>
+	      	<div class="content">{$data['art_content']}</div>     	
+	      	
+	      	<div class="page">
+	      		
+	      		<?php if (!empty($Previous)) { ?>
+	      		<p><a href="<?php echo $this->mRouter->urlEx('item', '', array('id' => $Previous[0]['id'], 'art_title' => $Previous[0]['art_title'])); ?>">Previous: <?php echo $Previous[0]['art_title']?></a></p>
+	      		<?php } ?>
+	      		
+	      		<?php if (!empty($Next)) { ?>
+	      		<p><a href="<?php echo $this->mRouter->urlEx('item', '', array('id' => $Next[0]['id'], 'art_title' => $Next[0]['art_title'])); ?>">Next: <?php echo $Next[0]['art_title']?></a></p>
+	      		<?php } ?>
+	      			
+	      	</div>
+	      
+      	</div>
+      	
+      	{layout foot_bom}
+    </div> <!-- /container -->
+	  
+		{layout foot}
+  </body>
+</html>

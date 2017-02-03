@@ -1,0 +1,26 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+<style type="text/css">
+	.none{
+		display: none;
+	}
+</style>
+<script>
+function file_onchange(self)
+{
+	self.form.submit();
+}
+
+</script>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data" action="{eval $this->mRouter->urlEx($this->C, 'upload', array('callback' => $callback))}" target="opframe">
+<input type="file" name="upfile" class="up_file" style="height: 70px; cursor: pointer;" onChange="file_onchange(this)"/>
+</form>
+<iframe width="0" height="500" frameborder="500" name="opframe" class="none"></iframe>
+</body>
+</html>

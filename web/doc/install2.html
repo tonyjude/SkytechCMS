@@ -1,0 +1,101 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>使用入门  /  SkytechCMS系统安装 - SkytechCMS帮助中心</title>
+<link href="/css/arclist.css" rel="stylesheet" type="text/css" />
+<meta name="keywords" content="">
+<meta name="description" content="">
+<style type="text/css">
+	table tr td{
+		font-size: 16px;
+	}
+</style>
+</head>
+<body>
+<div id="container">
+
+<div id="header">
+  <div id="navct">
+  	<div id="navtop">
+  	 当前位置：<a href='/doc/index-main.html'>主页</a> > <a href='#'>使用入门</a> > <a href='/doc/install2.html'>SkytechCMS系统安装</a> > 
+    </div>
+  </div>
+</div>
+
+<dl class="pubbox">
+<dt>SkytechCMS系统安装：</dt>
+<dd>
+<table>
+	<tr><td><p><font color="#333" size="2">我们完成了环境的准备之后，下面就可以通过在浏览器中输入安装向导的网址开始进行SkytechCMS的安装，在安装完成之后我们就可以看到我们的站点。<br />我们下载下来通常是一个压缩包，将其解压，然后将文件夹中的文件上传到网站的根目录中。</font></p>
+<p>
+<table style="BORDER-RIGHT: #cccccc 1px dotted; TABLE-LAYOUT: fixed; BORDER-TOP: #cccccc 1px dotted; BORDER-LEFT: #cccccc 1px dotted; BORDER-BOTTOM: #cccccc 1px dotted" cellspacing="0" cellpadding="6" width="95%" align="center" border="0">
+    <tbody>
+        <tr>
+            <td style="WORD-WRAP: break-word" bgcolor="#fdfddf"><font size="2">
+            	<font color="#ff0000">提示：</font>安装之前必须修改 /application/shendou/config.inc.php</font>
+            </td>
+        </tr>
+        <tr bgcolor="#ccc">
+        	<td>
+        		首先我们配置“数据库设定”部分的参数，这里我们涉及到几个概念“数据库主机”、“数据库名称”、“数据库用户”、“数据库密码”、“数据库编码”。	<br />
+        		如果您使用的是虚拟主机或者合租服务器，一般空间商都会提供给你相关的数据，如果你是自己配置服务器或者本地测试，一般在环境架设时候会有相关的信息提示。
+        	</td>
+        </tr>
+        <tr>
+        	<td>
+        		'db_cfg' => array (
+							'dsn' => 'mysql:host=127.0.0.1;dbname=skytech_test',
+							'username' => 'root',
+							'password' => 'root'
+						),
+        	</td>
+        </tr>
+        <tr>
+        	<td>
+							'dsn' => mysql:host=服务器主机ip,一般不用修改; dbname=数据库名称; username=>数据库用户名， password=>数据库密码； 如果是sql server 数据库，则dsn => sqlsrv:Database=数据库名称;Server=127.0.0.1;
+        	</td>
+        </tr>
+        
+    </tbody>
+</table>
+<br /><font <font color="#333" size="2">1.我们在浏览器中打开http://你的网址/skytech_admin.php?s=index/install ，开始进行安装。
+	<br /><br /><img border="0" alt="" width="100%" src="/images/install1.png" /> 
+	<br /><br />这里我们对系统环境做一个简单的说明：<br />SkytechCMS是基于PHP和MySQL技术开发，可以同时使用在Windows、Linux、Unix平台，其具体环境如下：<br /></font></p>
+<p>
+<table style="BORDER-RIGHT: #cccccc 1px dotted; TABLE-LAYOUT: fixed; BORDER-TOP: #cccccc 1px dotted; BORDER-LEFT: #cccccc 1px dotted; BORDER-BOTTOM: #cccccc 1px dotted" cellspacing="0" cellpadding="6" width="95%" align="center" border="0">
+    <tbody>
+        <tr>
+            <td style="WORD-WRAP: break-word" bgcolor="#fdfddf"><font size="2">
+            	<font color="#ff0000">以下为引用的内容：</font>
+            	<br />◆Windows 平台&nbsp;&nbsp;&nbsp; IIS/Apache + PHP4/PHP5 + MySQL3/4/5
+            	<br />◆Linux/Unix 平台&nbsp;&nbsp;&nbsp; Apache + PHP4/PHP5 + MySQL3/4/5 (PHP必须在非安全模式下运行) 建议使用平台&nbsp;&nbsp;&nbsp; Linux + Apache2.2 + PHP5.2 + MySQL5.0
+            	<br />◆PHP必须环境或启用的系统函数&nbsp;&nbsp;&nbsp; <span style="COLOR: #669900">[&radic;]</span>GD扩展库&nbsp;&nbsp;&nbsp; <span style="COLOR: #669900">[&radic;]</span>MySQL扩展库&nbsp;&nbsp;&nbsp; </font></td>
+        </tr>
+    </tbody>
+</table>
+<br /><font color="#333" size="2">2.如果环境检测全部正确（[&radic;]），我们点击&ldquo;Next&ldquo; 继续安装<br /></font></p>
+<p>
+<b /><br /><font color="#333"  size="2"><img border="0" alt="" width="100%" src="/images/install2.png" /> <br /><br />3.点击&ldquo;继续&rdquo;，完成SkytechCMS的安装，到这里为止，我们的安装已经完成了，下面就是我们开始使用SkytechCMS<br /><br />
+<img  border="0" alt="" width="100%" src="/images/install3.png" /> <br />4.点击[网站后台]，网址自动转向到</font>
+<a target="_blank" href="http://bbs.SkytechCMS.com/goto.php?url=http%3A%2F%2Fwww.yoursite.com%2Fdede%2Flogin.php"><font color="#2f5fa1" size="2">http://www.yoursite.com/skytech_admin.php</font></a><font  color="#333"  size="2">(yoursite代表你的网站)，输入我们安装时候填写的管理员用户名和密码，以超级管理员身份登陆系统。用户名： skytech , 密码： ******* <br /><br /></font></p>
+<p>
+<table style="BORDER-RIGHT: #cccccc 1px dotted; TABLE-LAYOUT: fixed; BORDER-TOP: #cccccc 1px dotted; BORDER-LEFT: #cccccc 1px dotted; BORDER-BOTTOM: #cccccc 1px dotted" cellspacing="0" cellpadding="6" width="95%" align="center" border="0">
+	<img  border="0" alt="" width="100%" src="/images/install4.png" /> 
+</table>
+<br /></p></td></tr>
+</table>
+</dd>
+</dl>
+
+<br class='clearfloat' />
+	
+<div id="footer" style='margin-top:8px'>
+<p>
+Copyright 2015-2017 <a href="#" target=_blank><u>SkytechCMS</u></a>
+</p>
+</div>
+</div>
+</body>
+</html>
