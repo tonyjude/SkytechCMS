@@ -84,7 +84,7 @@ class articleControllor extends Shendou_Controllor_ManageAbstract
 		$ret = $this->db->query('select id,cate_name,cate_parent_id,cate_level from skytech_categories where cate_is_topic=0 order by cate_sort')->toArray();
 		
 		$temp = $this->getMenuTree($ret, 0);
-		$cates = $this->createOptions($temp);
+		$cates = $this->createOptions($temp, $cid);
 		
 		if ($aid) {
 			$info = $this->article->get($aid);
