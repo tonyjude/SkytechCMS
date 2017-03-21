@@ -84,7 +84,7 @@ abstract class Shendou_Controllor_Abstract extends Lamb_Controllor_Abstract
 	/**
 	 * 创建options
 	 */
-	public function createOptions($tree)
+	public function createOptions($tree, $cid=0)
     {
         $html = "";
 		if (empty($tree)){
@@ -93,18 +93,18 @@ abstract class Shendou_Controllor_Abstract extends Lamb_Controllor_Abstract
 		
        	foreach($tree as $key => $t)
         {
-        	
             if(!$t['parent_id'])
             {
-                $html .= "<option value={$t['id']}>";
+                $html .= "<option value={$t['id']} " . ($cid == $t['id'] ? "selected='selected'" : '') .  ">";
 				$html .=  str_repeat('─', $t['cate_level']-1) . $t['cate_name'];
 				$html .= "</option>";
+		
             }
             else
             {
-            	$html .= "<option value={$t['id']}>";
+            	$html .= "<option value={$t['id']} " . ($cid == $t['id'] ? "selected='selected'" : '') .  ">";
 				$html .=  str_repeat('─', $t['cate_level']-1) . $t['cate_name'] . "</option>";
-               	$html .=  $this->createOptions($t['parent_id']);
+               	$html .=  $this->createOptions($t['parent_id'], $cid);
             }
         }
 
