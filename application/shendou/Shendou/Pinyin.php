@@ -8,7 +8,7 @@ class Shendou_Pinyin
 
 	public static function utf8_to_gb2312($s) 
 	{
-		return iconv('UTF-8', 'GB2312//IGNORE', $s);
+		return @iconv('UTF-8', 'GB2312//IGNORE', $s);
 	}
 
 	// 字符串必须为GB2312编码

@@ -168,7 +168,7 @@
 												<td>{field.art_author}</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="{field.id function="Lamb_Utils::objectCall(CALL_ROUTER, 'urlEx', array('@$this->C@', 'addOrUpdate', array('aid' => @this, 'cid' => @$cid@, 'cname' => @me['cate_name'])))"}" title="详情">
+														<a class="blue" href="{field.id function="Lamb_Utils::objectCall(CALL_ROUTER, 'urlEx', array('@$this->C@', 'addOrUpdate', array('aid' => @this, 'cid' => @me['art_catalog_id'], 'cname' => @me['cate_name'])))"}" title="详情">
 															<i class="ace-icon fa fa-pencil bigger-130"></i>
 														</a>
 														<a class="red article-del" aid={field.id} title="删除">

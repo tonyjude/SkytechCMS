@@ -198,5 +198,19 @@ abstract class Shendou_Controllor_FrontAbstract extends Shendou_Controllor_Abstr
 		$str = date('Y-m-d H:i:s') . " 信息：{$str}";
 		file_put_contents($path, $str . "\r", FILE_APPEND);
 	}	
+	
+	public function redirect($url, $time=1)
+	{
+		 $time = $time * 1000;	
+		 echo "<script language='javascript' type='text/javascript'>
+				 function redirect() 
+				 {
+					 self.location.href= '$url';
+				 }
+				 window.setTimeout('redirect();', $time);
+			 </script>";
+		
+		exit;
+	}
 }
 

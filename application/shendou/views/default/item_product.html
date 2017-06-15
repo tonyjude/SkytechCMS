@@ -34,9 +34,25 @@
 			      	<p>{$data['art_content']}</p>
 			      	
 			      	<p>
+			      		Tag:
 			      		{$tags}
 			      	</p>
 			      	
+			      	 <form method="post" id="button1">
+					        <input type="text" name="data[msg_name]" id="msg_name" placeholder="Name *" class="name">
+					        <input type="text" name="data[msg_email]" id="msg_email" placeholder="Email *" class="name">
+					        <textarea name="data[msg_comments]" id="msg_comments" placeholder="Message *"></textarea>
+					
+						<input  name="data[project_id]" type="hidden" value="0" /> 	
+						<input id="msg_subject" name="data[msg_subject]" type="hidden" value="" /> 
+						<input id="msg_source_page" name="data[msg_source_page]" type="hidden" value="" />
+						
+					        <input type="submit" name="submit" value="Submit" class='coolbg' />
+					        &nbsp;&nbsp;
+					        <input type="reset" name="reset" value="Reset" class='coolbg' />
+					    </form>
+
+
 		      	</div>
 						
 					</div>

@@ -583,7 +583,8 @@ class Lamb_App_Request
 	 * @param string $url
 	 * @param array $post_data
 	 */
-	public function requestPost($url = '', $post_data = array()) {
+	public function requestPost($url = '', $post_data = array()) 
+	{
 		if (empty($url) || empty($post_data)) {
 			return false;
 		}
@@ -594,7 +595,7 @@ class Lamb_App_Request
 			$o.= "$k=" . urlencode( $v ). "&" ;
 		}
 		$post_data = substr($o,0,-1);
-
+	
 		$postUrl = $url;
 		$curlPost = $post_data;
 		$ch = curl_init();//初始化curl
@@ -608,6 +609,4 @@ class Lamb_App_Request
 		
 		return $data;
 	}
-
-
 }

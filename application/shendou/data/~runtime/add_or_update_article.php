@@ -118,7 +118,7 @@
 										<label class="col-sm-2 control-label no-padding-right" >文章标题</label>
 
 										<div class="col-sm-10">
-											<input type="text" name="data[art_title]" id="art_title" style="width: 450px;" maxlength="100" value="<?php echo isset($info['art_title']) ? $info['art_title'] : ''; ?>" placeholder="必填" 　 class="col-xs-10 col-sm-5">
+											<input type="text" name="data[art_title]" id="art_title" style="width: 450px;" value="<?php echo isset($info['art_title']) ? $info['art_title'] : ''; ?>" placeholder="必填" 　 class="col-xs-10 col-sm-5">
 										</div>
 									</div>
 									
@@ -126,7 +126,7 @@
 										<label class="col-sm-2 control-label no-padding-right" >TAG标签</label>
 
 										<div class="col-sm-10">
-											<input type="text" name="data[art_tag]" style="width: 450px;"  maxlength="150" value="<?php echo isset($info['art_tag']) ? $info['art_tag'] : ''; ?>"　 class="col-xs-10 col-sm-5">
+											<input type="text" name="data[art_tag]" style="width: 450px;" value="<?php echo isset($info['art_tag']) ? $info['art_tag'] : ''; ?>"　 class="col-xs-10 col-sm-5">
 										</div>
 									</div>
 
@@ -134,17 +134,8 @@
 										<label class="col-sm-2 control-label no-padding-right" >文章主栏目</label>
 
 										<div class="col-sm-10">
-											<select name="data[art_catalog_id]" id="art_catalog_id" style="width:240px">
-												<?php if (isset($info['cate_id'])) { ?>
-													<option value="<?php echo $info['cate_id']; ?>" selected="selected"><?php echo $info['cate_name']; ?></option>	
-												<?php } ?>	
-												
-												<?php if ($cid && $cname) { ?>
-													<option value="<?php echo $cid; ?>" selected="selected"><?php echo $cname; ?></option>	
-												<?php } ?>				
-												
+											<select name="data[art_catalog_id]" id="art_catalog_id" style="width:240px">	
 												<?php echo $cates;?>
-		
 											</select>
 										</div>
 									</div>

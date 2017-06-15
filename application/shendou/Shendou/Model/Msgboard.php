@@ -24,7 +24,8 @@ class Shendou_Model_Msgboard extends Shendou_Model
 		$data['msg_city'] = isset($data['msg_city']) ? htmlspecialchars($data['msg_city']) : '';
 		$data['msg_address'] = isset($data['msg_address']) ? htmlspecialchars($data['msg_address']) : '';
 		$data['msg_comments'] = isset($data['msg_comments']) ? addslashes(htmlspecialchars($data['msg_comments'])) : '';
-	
+		
+		unset($data['project_id']);
 		$table = new Lamb_Db_Table('skytech_msgboard', Lamb_Db_Table::INSERT_MODE);
 				
 		//$sql = $table->set($data)->getInsertSql();

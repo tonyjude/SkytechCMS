@@ -176,6 +176,8 @@ class categoriesControllor extends Shendou_Controllor_ManageAbstract
 		
 		$article_index_url = $this->mSiteCfg['dynamic_url']['article_index'];
 		
+		$cate_update = $this->mSiteCfg['dynamic_url']['categories_add_or_update'];
+		
        	foreach($tree as $key => $t)
         {
             if(!$t['parent_id'])
@@ -193,7 +195,7 @@ class categoriesControllor extends Shendou_Controllor_ManageAbstract
 				}
 				
 				$html .= "<a class='add_sub_catag' title='添加子栏目' cate_name='{$t['cate_name']}'><i class='ui-icon ace-icon fa fa-plus-circle purple'></i></a>";
-				$html .= "<a class='blue update_catag'><i class='ace-icon fa fa-pencil bigger-130'></i></a>";
+				$html .= "<a class='blue update_catag' href='{$cate_update}/cate_id/{$t["id"]}'><i class='ace-icon fa fa-pencil bigger-130'></i></a>";
 				$html .= "<a class='red del_catag'><i class='ace-icon fa fa-trash-o bigger-130'></i></a>";
 				$html .= "</div></div></li>";
             }
@@ -211,8 +213,8 @@ class categoriesControllor extends Shendou_Controllor_ManageAbstract
 				if ($t['cate_is_topic']) {
 					$html .= "<a title='专题'><i class='ace-icon fa fa-bookmark bigger-130'></i></a>";
 				}
-				$html .= "<a class='add_sub_catag' title='添加子栏目'><i class='ui-icon ace-icon fa fa-plus-circle purple'></i></a>";
-                $html .= "<a class='blue update_catag' cate_name='{$t["cate_name"]}'><i class='ace-icon fa fa-pencil bigger-130'></i></a>";
+				$html .= "<a class='add_sub_catag' title='添加子栏目' ><i class='ui-icon ace-icon fa fa-plus-circle purple'></i></a>";
+                $html .= "<a class='blue update_catag' href='{$cate_update}/cate_id/{$t["id"]}' cate_name='{$t["cate_name"]}'><i class='ace-icon fa fa-pencil bigger-130'></i></a>";
 				$html .= "<a class='red del_catag'><i class='ace-icon fa fa-trash-o bigger-130'></i></a>";
 				$html .= "</div></div>";
                 $html .= "<ol class='dd-list'>" .$this->createHtml($t['parent_id']) . "</ol>";

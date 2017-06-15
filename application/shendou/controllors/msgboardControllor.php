@@ -27,10 +27,10 @@ class msgboardControllor extends Shendou_Controllor_FrontAbstract
 			if (isset($data['msg_email']) && trim($data['msg_email']) == '') {
 				$this->showResults(-1, null, 'email can not be empty');
 			}
-			
+	
 			if ($this->model->add($data)) {
 				$flag = $this->sendMail($data);
-				$this->log($data['msg_email'] . '邮件发送' . ($flag ? '成功' : '失败'));
+				//$this->log($data['msg_email'] . '邮件发送' . ($flag ? '成功' : '失败'));
 				$this->showResults(1);
 			}
 		}
@@ -42,14 +42,14 @@ class msgboardControllor extends Shendou_Controllor_FrontAbstract
 	{
 		if ($this->mRequest->isPost()) {
 			$data = $this->mRequest->getPost('data');
-			
+		
 			if (isset($data['msg_email']) && trim($data['msg_email']) == '') {
 				$this->showResults(-1, null, 'email can not be empty');
 			}
 			
 			if ($this->model->add($data)) {
 				$flag = $this->sendMail($data);
-				$this->log($this->mSiteCfg['webInfo']['site']['email'] . '邮件发送' . ($flag ? '成功' : '失败'));
+				//$this->log($this->mSiteCfg['webInfo']['site']['email'] . '邮件发送' . ($flag ? '成功' : '失败'));
 				$this->showResults(1);
 			}
 		}
@@ -59,16 +59,16 @@ class msgboardControllor extends Shendou_Controllor_FrontAbstract
 
 	public function sendMail($data) 
 	{
+		$source  = 'From Google Search';
+		$data['msg_from'] = $source;
+		$data['msg_source_page'] = $_SERVER["HTTP_REFERER"];
+		$this->requestPost('http://admin.91yiyingxiao.com/?s=task/msgboard', $data);
+		
 		$isSend = $this->mSiteCfg['webInfo']['site']['isSend'];
 		if (!$isSend) {
 			return false;
 		}
 		
-		$num = rand(0, 9);
-		$num = $num == 7 ? 1 : 0; 
-		$channel = array('Google','Bing');
-		$source = $channel[$num];
-
 		$table = '<style>
 					table {
 						border-collapse: collapse;
@@ -87,26 +87,31 @@ class msgboardControllor extends Shendou_Controllor_FrontAbstract
 		$table .= "<table><tbody>";
 		
 		$table .= "<tr><td>From</td><td>{$source}</td><tr>";
-		$table .= isset($data['msg_name']) && $data['msg_name'] != '' ? "<tr><td>Name</td><td>{$data['msg_name']}</td><tr>" : '';
-		$table .= isset($data['msg_company']) && $data['msg_company'] != '' ? "<tr><td>Company</td><td>{$data['msg_company']}</td><tr>" : '';
-		$table .= isset($data['msg_product']) && $data['msg_product'] != '' ? "<tr><td>Product</td><td>{$data['msg_product']}</td><tr>" : '';
+		
+		$table .= isset($data['msg_company']) && $data['msg_company'] != '' ? "<tr><td>Company Name</td><td>{$data['msg_company']}</td><tr>" : '';
+		
+		$table .= isset($data['msg_name']) && $data['msg_name'] != '' ? "<tr><td>Contact Name</td><td>{$data['msg_name']}</td><tr>" : '';
+		
+		$table .= isset($data['msg_source_page']) && $data['msg_source_page'] != '' ? "<tr><td>Source Page</td><td>{$data['msg_source_page']}</td><tr>" : '';
+		
 		$table .= isset($data['msg_email']) && $data['msg_email'] != '' ? "<tr><td>Email</td><td>{$data['msg_email']}</td><tr>" : '';
-		$table .= isset($data['msg_fax']) && $data['msg_fax'] != '' ? "<tr><td>Fax</td><td>{$data['msg_fax']}</td><tr>" : '';
+
 		$table .= isset($data['msg_phone']) && $data['msg_phone'] != '' ? "<tr><td>Phone</td><td>{$data['msg_phone']}</td><tr>" : '';
-		$table .= isset($data['msg_country']) && $data['msg_country'] != '' ? "<tr><td>Country</td><td>{$data['msg_country']}</td><tr>" : '';
-		$table .= isset($data['msg_city']) && $data['msg_city'] != '' ? "<tr><td>City</td><td>{$data['msg_city']}</td><tr>" : '';
+		
+		$table .= isset($data['msg_tel']) && $data['msg_tel'] != '' ? "<tr><td>Tel</td><td>{$data['msg_tel']}</td><tr>" : '';
+		
 		$table .= isset($data['msg_address']) && $data['msg_address'] != '' ? "<tr><td>Address</td><td>{$data['msg_address']}</td><tr>" : '';
+		
 		$table .= isset($data['msg_comments']) && $data['msg_comments'] != '' ? "<tr><td>Message</td><td>{$data['msg_comments']}</td><tr>" : '';
+		
+		$msg_date = date('Y-m-d H:i');
+		$table .=  "<tr><td>Message Time</td><td>{$msg_date}</td><tr>";
+		
 		$table .= "</tbody></table>";									
 						
-		$receiver = $this->mSiteCfg['webInfo']['site']['email'];				
-		if (!Lamb_Utils::isEmail($receiver)) {
-			return false;
-		}
-		
+		$receiver  = $this->mSiteCfg['webInfo']['site']['email'];	
+		$receivers = explode(',', $receiver);
 		$mail = new PHPMailer;
-	
-		//$mail->SMTPDebug = 3;                                // Enable verbose debug output
 	
 		$mail->isSMTP();                                       // Set mailer to use SMTP
 		$mail->Host = 'smtp.gmail.com'; 					   // Specify main and backup SMTP servers
@@ -116,13 +121,15 @@ class msgboardControllor extends Shendou_Controllor_FrontAbstract
 		$mail->SMTPSecure = 'tls';                  		   // Enable TLS encryption, `ssl` also accepted
 		$mail->Port = 587;                             		   // TCP port to connect to
 		
-		$clientName = explode('@', $receiver);
 		$mail->setFrom('webskytech16@gmail.com', 'skytech');
-		$mail->addAddress($receiver, $clientName[0]);    		// Add a recipient
-		$mail->addReplyTo($receiver, 'Information');
-	
+		foreach($receivers as $item){
+		   $clientName = explode('@', $item);	
+		   $mail->addAddress($item, $clientName[0]);    		// Add a recipient
+		}
+
+		$mail->addReplyTo($receivers[0], 'Information');
 		$mail->isHTML(true);                                  	// Set email format to HTML
-		$mail->Subject = 'Inquiry Email Data';
+		$mail->Subject = 'From Google Search ' . $data['msg_subject'];
 		$mail->Body    =  $table;
 		
 		$mail->AltBody = 'Dear customer, Here is the inquiry email，Thank you for using the skytech service！';
@@ -145,6 +152,38 @@ class msgboardControllor extends Shendou_Controllor_FrontAbstract
 			$data['msg_date'] = time();
 			$this->model->add($data);						
 		}
+	}
+	
+	/**
+	 * 模拟post进行url请求
+	 * @param string $url
+	 * @param array $post_data
+	 */
+	public function requestPost($url = '', $post_data = array()) 
+	{
+		if (empty($url) || empty($post_data)) {
+			return false;
+		}
+		
+		$o = "";
+		foreach ( $post_data as $k => $v ) 
+		{ 
+			$o.= "$k=" . urlencode( $v ). "&" ;
+		}
+		$post_data = substr($o,0,-1);
+	
+		$postUrl = $url;
+		$curlPost = $post_data;
+		$ch = curl_init();//初始化curl
+		curl_setopt($ch, CURLOPT_URL,$postUrl);//抓取指定网页
+		curl_setopt($ch, CURLOPT_HEADER, 0);//设置header
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);//要求结果为字符串且输出到屏幕上
+		curl_setopt($ch, CURLOPT_POST, 1);//post提交方式
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $curlPost);
+		$data = curl_exec($ch);//运行curl
+		curl_close($ch);
+		
+		return $data;
 	}
 
 }

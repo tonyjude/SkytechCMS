@@ -62,11 +62,8 @@ class topicControllor extends Shendou_Controllor_ManageAbstract
 
 			//如果ID不存在添加专题， ID存在修改专题
 			if ($data['id']) {
-				if ($this->topic->update($data['id'], $data)) {
-					$this->showMsg(1, array('url' => $this->createTopic($data['id'])), '修改成功！');
-				} else {
-					$this->showMsg(0, null, '修改失败！');
-				}
+				$this->topic->update($data['id'], $data);
+				$this->showMsg(1, array('url' => $this->createTopic($data['id'])), '修改成功！');
 			}
 			
 			$topic_url = '/' . Shendou_Pinyin::to($data['topic_name'], true). '/';

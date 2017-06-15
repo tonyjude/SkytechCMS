@@ -137,13 +137,13 @@
 											</tr>
 											
 											<tr>
-												<td>Product:</td>
-												<td><?php echo $info['msg_product'];?></td>
+												<td>Subject：</td>
+												<td><?php echo $info['msg_subject'];?></td>
 											</tr>
 											
 											<tr>
-												<td>Fax:</td>
-												<td><?php echo $info['msg_fax'];?></td>
+												<td>页面来源：</td>
+												<td><?php echo $info['msg_source_page'];?></td>
 											</tr>
 											
 											<tr>
@@ -157,13 +157,8 @@
 											</tr>
 											
 											<tr>
-												<td>Country:</td>
-												<td><?php echo $info['msg_country'];?></td>
-											</tr>
-											
-											<tr>
-												<td>City:</td>
-												<td><?php echo $info['msg_city'];?></td>
+												<td>Tel:</td>
+												<td><?php echo $info['msg_tel'];?></td>
 											</tr>
 											
 											<tr>

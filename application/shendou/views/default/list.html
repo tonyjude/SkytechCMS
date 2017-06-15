@@ -37,12 +37,14 @@
 					<div class="col-xs-12">
 						<div class="dataTables_paginate paging_simple_numbers" id="sample-table-2_paginate">
 							<ul class="pagination">
+								<li class="paginate_button previous" aria-controls="sample-table-2" tabindex="0" id="sample_previous"><a href="@$firstPageUrl@">首页</a></li>
 								<li class="paginate_button previous" aria-controls="sample-table-2" tabindex="0" id="sample_previous"><a href="@$prevPageUrl@">上一页</a></li>
 
 								{pageitem focus='<li class="paginate_button active" aria-controls="sample-table-2" tabindex="0"><a>#page#</a></li>' nofocus='<li><a href="@$pageUrl@">#page#</a></li>'}
 
 
 								<li class="paginate_button next" aria-controls="sample-table-2" tabindex="0" id="sample_next"><a href="@$nextPageUrl@">下一页</a></li>
+								<li class="paginate_button next" aria-controls="sample-table-2" tabindex="0" id="sample_next"><a href="@$lastPageUrl@">尾页</a></li>
 							</ul>
 						</div>
 					</div>

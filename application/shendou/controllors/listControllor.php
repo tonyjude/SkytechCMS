@@ -52,6 +52,9 @@ class listControllor extends Shendou_Controllor_FrontAbstract
 		$keywords = $ret['cate_keywords'] ? $ret['cate_keywords'] : $ret['cate_name'];
 		$description = $ret['cate_description'] ? $ret['cate_description'] : $ret['cate_name'];
 		
+		$firstPageUrl = $this->mRouter->urlEx($this->C, '', array('id' => $id, 'p' => 1));
+		$lastPageUrl  = $this->mRouter->urlEx($this->C, '', array('id' => $id, 'p' => '#lastPage#'));
+			
 		include $this->load($default_template);	
 
 	}

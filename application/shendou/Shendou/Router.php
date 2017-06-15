@@ -156,6 +156,7 @@ class Shendou_Router extends Lamb_App_Router
 	{
 		$staticHost = $dynamicHost = $this->getHost();
 		$title = isset($param['art_title']) ? $param['art_title'] : 0;
+		//$title = isset($param['id']) ? $param['id'] : 0;
 		if(!$param){
 			$param = array();
 		}
@@ -164,7 +165,7 @@ class Shendou_Router extends Lamb_App_Router
 			return $this->getDynamicPageUrlTempalte($dynamicHost, 'item', $action, $param, $encode, $full);
 		}
 		
-		$title = Shendou_Pinyin::to($title);
+		$title = Shendou_Pinyin::to(trim($title));
 		return "{$staticHost}/blog/{$title}.{$this->mStaticExtend}";
 		
 	}

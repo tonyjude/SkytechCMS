@@ -104,7 +104,7 @@ class Shendou_Model_Categories extends Shendou_Model
 			if (empty($res)) {
 				$db->query("insert into skytech_topic (id, topic_name, topic_postdate, topic_url, topic_templte) values ($id, '{$ret['cate_name']}', '{$date}', '{$ret['cate_url']}', '{$cate_topic_templte}')");
 			} else {
-				$db->query("update skytech_topic set topic_templte='{$cate_topic_templte}' where id={$id}");
+				$db->query("update skytech_topic set topic_templte='{$cate_topic_templte}', topic_name='{$data['cate_name']}'  where id={$id}");
 			}
 		}
 

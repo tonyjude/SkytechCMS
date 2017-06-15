@@ -34,7 +34,7 @@
 	<body>
 		
 		<form id="upload-form" action="{eval $this->mRouter->urlEx($this->C, 'upload')}"  method="POST" enctype="multipart/form-data" target="opFrame" >
-											 	
+			<input type="hidden" name="MAX_FILE_SIZE" value="512000" />								 
 		 	<input type="hidden" name="<?php echo ini_get("session.upload_progress.name"); ?>" value="test" />
 		 	<input type="file" name="upfile" class="upfile" onChange="file_onchange(this)"/>
 

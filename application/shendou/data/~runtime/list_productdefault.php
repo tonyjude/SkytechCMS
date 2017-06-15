@@ -49,7 +49,7 @@
 				'db_callback' => null,
 				'show_result_callback' => create_function('$item,$index','return str_replace("#autoIndex#",$index,\'
 					      	<div class="col-md-6 col-sm-6">
-					      			<a title="\'.$item[\'art_title\'].\'" href="\'.(Lamb_Utils::objectCall(CALL_ROUTER, \'urlEx\', array(\'item\', \'index\', array(\'art_title\' => $item[\'art_title\'], \'id\' => $item[\'id\'])))).\'">
+					      			<a title="\'.$item[\'art_title\'].\'" href="\'.($item[\'recommend\'] == 3 ? $item[\'art_url\'] : Lamb_Utils::objectCall(CALL_ROUTER, \'urlEx\', array(\'item\', \'index\', array(\'art_title\' => $item[\'art_title\'], \'id\' => $item[\'id\'])))).\'">
 				        		   		<img src="\'.$item[\'art_image\'].\'" width="200" height="200"/>
 				        		  </a>	
 					      			<h3 class="t"><a title="\'.$item[\'art_title\'].\'" href="\'.(Lamb_Utils::objectCall(CALL_ROUTER, \'urlEx\', array(\'item\', \'index\', array(\'art_title\' => $item[\'art_title\'], \'id\' => $item[\'id\'])))).\'">\'.$item[\'art_title\'].\'</a></h3>
@@ -69,13 +69,15 @@
 							<div class="col-xs-12" style="text-align: center;">
 								<div class="dataTables_paginate paging_simple_numbers" id="sample-table-2_paginate">
 									<ul class="pagination">
-										<li class="paginate_button previous" aria-controls="sample-table-2" tabindex="0" id="sample_previous"><a href="'.$prevPageUrl.'">Previous</a></li>
-		
-										',
+										<li class="paginate_button previous" aria-controls="sample-table-2" tabindex="0" id="sample_previous"><a href="'.$firstPageUrl.'">首页</a></li>
+								<li class="paginate_button previous" aria-controls="sample-table-2" tabindex="0" id="sample_previous"><a href="'.$prevPageUrl.'">上一页</a></li>
+
+								',
 			'page_end_html'	=>	'
-		
-		
-										<li class="paginate_button next" aria-controls="sample-table-2" tabindex="0" id="sample_next"><a href="'.$nextPageUrl.'">Next</a></li>
+
+
+								<li class="paginate_button next" aria-controls="sample-table-2" tabindex="0" id="sample_next"><a href="'.$nextPageUrl.'">下一页</a></li>
+								<li class="paginate_button next" aria-controls="sample-table-2" tabindex="0" id="sample_next"><a href="'.$lastPageUrl.'">尾页</a></li>
 									</ul>
 								</div>
 							</div>

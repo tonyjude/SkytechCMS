@@ -126,7 +126,7 @@
 										<label class="col-sm-2 control-label no-padding-right" >名称 </label>
 
 										<div class="col-sm-10">
-											<input type="text" name="data[topic_name]" maxlength="100" value="<?php echo isset($info['topic_name']) ? $info['topic_name'] : ''; ?>"　id="topic_name" placeholder="必填" class="col-xs-10 col-sm-5">
+											<input <?php if (isset($info['topic_name'])) {echo "readonly=true";} ?> type="text" name="data[topic_name]" value="<?php echo isset($info['topic_name']) ? $info['topic_name'] : ''; ?>"　  id="topic_name" placeholder="必填" class="col-xs-10 col-sm-5">
 										</div>
 									</div>
 									
@@ -134,7 +134,7 @@
 										<label class="col-sm-2 control-label no-padding-right" >标题 </label>
 
 										<div class="col-sm-10">
-											<input type="text" name="data[topic_title]"  maxlength="100" value="<?php echo isset($info['topic_title']) ? $info['topic_title'] : ''; ?>"　id="topic_title" class="col-xs-10 col-sm-5">
+											<input type="text" name="data[topic_title]"  value="<?php echo isset($info['topic_title']) ? $info['topic_title'] : ''; ?>"　id="topic_title" class="col-xs-10 col-sm-5">
 										</div>
 									</div>
 									

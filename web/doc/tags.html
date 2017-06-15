@@ -113,7 +113,18 @@
 		获取文章链接 一般不需要修改
 	</div>
 	
+	
+	
 </div>
+
+<div style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 4pt;PADDING-BOTTOM: 1pt; BORDER-LEFT: windowtext 1pt solid; PADDING-TOP: 1pt; BORDER-BOTTOM: windowtext 1pt solid">
+	<font color="red">文章跳转</font>
+	<div style="BORDER-RIGHT: medium none; PADDING-RIGHT: 0cm; BORDER-TOP: medium none; PADDING-LEFT: 0cm; BACKGROUND: red; PADDING-BOTTOM: 0cm; BORDER-LEFT: medium none; TEXT-INDENT: 21pt; PADDING-TOP: 0cm; BORDER-BOTTOM: medium none">
+{field.recommend function="@this == 3 ? @me['art_url'] : Lamb_Utils::objectCall(CALL_ROUTER, 'urlEx', array('item', 'index', array('art_title' => @me['art_title'], 'id' => @me['id'])))"}
+	</div>
+
+</div>
+	
 
 <br />
 <div style="TEXT-INDENT: 21pt">下面的标签配合上面列表标签做分页操作 listid='list' 对应上面的 id='list' </div>

@@ -847,12 +847,14 @@
 	});
 	
 	//编辑栏目
+	/*
 	$('.update_catag').each(function(i, obj){
 		$(obj).on('click', function(e){
 			var id = $(e.target).parent().parent().attr('id');
 			window.open(g_aCfg.dynamic_url.categories_add_or_update + '/cate_id/' + id);
 		});
 	});
+	*/
 	
 	//编辑菜单
 	$('.update_menu').each(function(i, obj){

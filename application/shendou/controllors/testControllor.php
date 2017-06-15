@@ -27,8 +27,30 @@ class testControllor extends Shendou_Controllor_FrontAbstract
 	
 	public function testAction()
 	{
-		//echo strstr('/rubber-hose/list_1.html', 'list_12.html');
-		echo preg_replace('/list_1/', 'index', '/rubber-hose/list_1.html');
+		set_time_limit(0);
+		$page = trim($this->mRequest->p);
+		$page = $page ? $page : 1;
+		$pagesize = 1;
+		$offset = ($page-1)*$pagesize;
+		$sql = "select id,site from skytech_seotest limit $offset, $pagesize";
+		$ret = $this->db->query($sql)->toArray();
+		
+		if (empty($ret)) {
+			exit('over');
+		}
+		
+		foreach ($ret as $item) {
+			$data = file_get_contents($item['site']);
+			if (!$data) {
+				$this->log('网站： ' . $item['site'] . ' ID: ' . $item['id'] . '采集失败');
+				continue;
+			}
+			
+			$this->db->query("update skytech_seotest set data='{$data}' where id={$item['id']}");
+		}
+
+		$this->redirect('/?s=test/test/p/'  . ++$page);
 	}
+	
 		
 }

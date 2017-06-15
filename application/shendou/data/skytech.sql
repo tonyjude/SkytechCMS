@@ -251,12 +251,15 @@ INSERT INTO `skytech_menu` (`id`, `menu_name`, `menu_url`, `menu_parent_id`, `me
 
 CREATE TABLE IF NOT EXISTS `skytech_msgboard` (
   `id` int(11) NOT NULL,
+  `msg_subject` varchar(500) COLLATE utf8_bin NOT NULL,
+  `msg_source_page` varchar(500) COLLATE utf8_bin DEFAULT NULL,
   `msg_company` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `msg_name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `msg_product` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `msg_email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `msg_email` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `msg_fax` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `msg_phone` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `msg_tel` varchar(200) COLLATE utf8_bin DEFAULT NULL,
   `msg_date` datetime DEFAULT NULL,
   `msg_country` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `msg_city` varchar(50) COLLATE utf8_bin DEFAULT NULL,
@@ -264,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `skytech_msgboard` (
   `msg_comments` varchar(2000) COLLATE utf8_bin DEFAULT NULL,
   `msg_status` bit(1) DEFAULT b'1',
   `msg_public` int(1) DEFAULT '0',
-  `msg_from` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '来自哪个客户网站的留言',
+  `msg_from` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '来自哪个网页',
   `msg_isread` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 

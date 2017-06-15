@@ -14,6 +14,11 @@ class indexControllor extends Shendou_Controllor_FrontAbstract
 		return 'index';
 	}
 	
+	public function tipsAction()
+	{
+		include $this->load('tips');
+	}
+	
 	public function indexAction()
 	{
 		$info = $this->mSiteCfg['webInfo'];

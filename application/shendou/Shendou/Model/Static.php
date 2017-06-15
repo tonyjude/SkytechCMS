@@ -176,7 +176,8 @@ class Shendou_Model_Static extends Shendou_Model
 			$path = $this->getTopicPath($id);
 			$path = $path . "index.{$extend}";
 		} else if ($model == 'item') {
-			$title = Shendou_Pinyin::to($param['art_title']);
+			$title = Shendou_Pinyin::to(trim($param['art_title']));
+			//$title = isset($param['id']) ? $param['id'] : 0;
 			$path = 'blog/' . "{$title}.{$extend}";
 		}
 		

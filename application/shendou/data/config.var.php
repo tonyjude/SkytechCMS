@@ -4,10 +4,9 @@ return array (
   array (
     'site' => 
     array (
-      'name' => '上海xx技术有限公',
+      'name' => 'Shanghai 123 Co.,Ltd.',
       'host' => '',
       'root' => '',
-      'mode' => 1,
       'linkman' => 'jude',
       'phone' => '123456',
       'skype' => '123456',
@@ -18,6 +17,7 @@ return array (
       'web_title' => '网站标题',
       'web_keywords' => '网站关键词',
       'description' => '网站描述',
+      'mode' => 1,
       'isSend' => 0,
     ),
     'upload' => 
@@ -40,7 +40,7 @@ return array (
     array (
       'extendtion' => 'html',
       'static_key' => '/keyword/',
-      'pagesize' => '6',
+      'pagesize' => '5',
       'save_path' => '../web/',
       'template' => '../application/shendou/views/default',
     ),

@@ -186,7 +186,7 @@
 												<td>\'.$item[\'art_author\'].\'</td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="\'.(Lamb_Utils::objectCall(CALL_ROUTER, \'urlEx\', array(\''.$this->C.'\', \'addOrUpdate\', array(\'aid\' => $item[\'id\'], \'cid\' => '.$cid.', \'cname\' => $item[\'cate_name\'])))).\'" title="详情">
+														<a class="blue" href="\'.(Lamb_Utils::objectCall(CALL_ROUTER, \'urlEx\', array(\''.$this->C.'\', \'addOrUpdate\', array(\'aid\' => $item[\'id\'], \'cid\' => $item[\'art_catalog_id\'], \'cname\' => $item[\'cate_name\'])))).\'" title="详情">
 															<i class="ace-icon fa fa-pencil bigger-130"></i>
 														</a>
 														<a class="red article-del" aid=\'.$item[\'id\'].\' title="删除">
